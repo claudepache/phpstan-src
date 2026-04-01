@@ -53,12 +53,6 @@ final class ParentMethodHelper
 				continue;
 			}
 
-			// Skip traits that inherited the method from a sub-trait
-			// The actual declaring trait will be processed separately
-			if ($methodReflection->getBetterReflection()->getDeclaringClass()->getName() !== $trait->getName()) {
-				continue;
-			}
-
 			$declaringTrait = $trait->getNativeMethod($methodName)->getDeclaringClass();
 			$parentMethods[] = [
 				$this->phpClassReflectionExtension->createUserlandMethodReflection(
